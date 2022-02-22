@@ -5,60 +5,33 @@ namespace Day_of_Week
 {
     class Program
     {
+        static int factor = 0;
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter Date");
+            Console.WriteLine("Enter a number");
+            int number = Convert.ToInt32(Console.ReadLine());
+            int perfectno = 0;
 
-            Console.WriteLine(" Enter day from 1 To 31");
-            int d = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Enter month between 1 To 12");
-            int m = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Enter a Year");
-            int y = Convert.ToInt32(Console.ReadLine());
-
-            date.DayOfWeek(d, m, y);
-
-        }
-    }
-
-    class date
-    {
-        public static void DayOfWeek(int d, int m, int y)
-        {
-            int y1 = y - (14 - m) / 12;
-            int x = y1 + y1 / 4 - y1 / 100 + y1 / 400;
-            int m1 = m + 12 * ((14 - m) / 12) - 2;
-            int d1 = (d + x + (31 * m1) / 12) % 7;
-
-
-            switch (d1)
+            for(int i = 1; i < number; i++)
             {
-                case 0:
-                    Console.WriteLine("\n Sunday");
-                    break;
-                case 1:
-                    Console.WriteLine("\n Monday");
-                    break;
-                case 2:
-                    Console.WriteLine("\n Tuesday");
-                    break;
-                case 3:
-                    Console.WriteLine("\n wednesday");
-                    break;
-                case 4:
-                    Console.WriteLine("\n Thursday");
-                    break;
-                case 5:
-                    Console.WriteLine("\n Firday");
-                    break;
-                case 6:
-                    Console.WriteLine("\n Saturday");
-                    break;
+                int remainder = number % i;
+                if (remainder == 0)
+                {
+                    factor = i;
+                    perfectno = perfectno + factor;
+                }
             }
-        }
+            if (number == perfectno)
+            {
+                Console.WriteLine(" Perfect Number");
+            }
+            else
+                Console.WriteLine(" Not Perfect Number");
 
+        }
     }
+
+    
+    
 }
 
