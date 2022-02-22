@@ -1,29 +1,38 @@
-﻿//      Stop Watch 
+﻿// See https://aka.ms/new-console-template for more information
+using System;
 
-using System.Diagnostics;
-
-namespace Stop_watch
+namespace Prime_Number
 {
-    class program
+    class Program
     {
         public static void Main(string[] args)
         {
-            Console.ReadLine();
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            Console.ReadLine();
-            stopwatch.Stop();
-            var elapsed_time = stopwatch.ElapsedMilliseconds;
-            Console.WriteLine(elapsed_time / 1000);
+            Console.WriteLine("Enter a number");
+            int number = Convert.ToInt32(Console.ReadLine());
 
+            bool Prime = true;
 
+            for (int i = 2; i < number; i++)
+            {
+                int remainder = number % i;
+
+                if (remainder == 0)
+                {
+                    Prime = false;
+                }
+            }
+
+            if (Prime == true)
+            {
+                Console.WriteLine($"{number} is a prime number");
+            }
+            else if (Prime == false)
+            {
+                Console.WriteLine($"{number} is not a prime number");
+            }
         }
+
     }
+
 }
-
-
-
-
-
-
 
