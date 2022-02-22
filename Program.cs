@@ -1,33 +1,23 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// Reverse number
 using System;
 
-namespace Day_of_Week
+namespace everse_Number
 {
     class Program
     {
-        static int factor = 0;
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter a number");
-            int number = Convert.ToInt32(Console.ReadLine());
-            int perfectno = 0;
+            Console.WriteLine(" Enter value of num");
+            int num = Convert.ToInt32(Console.ReadLine());
+            int  reminder  , reverse = 0;
 
-            for(int i = 1; i < number; i++)
-            {
-                int remainder = number % i;
-                if (remainder == 0)
-                {
-                    factor = i;
-                    perfectno = perfectno + factor;
-                }
+            while(num>0){
+                reminder = num % 10;
+                reverse = (reverse * 10) + reminder;
+                num = num / 10;
             }
-            if (number == perfectno)
-            {
-                Console.WriteLine(" Perfect Number");
-            }
-            else
-                Console.WriteLine(" Not Perfect Number");
-
+            Console.WriteLine(reverse);
+           // Console.ReadLine();
         }
     }
 
