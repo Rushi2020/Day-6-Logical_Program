@@ -1,38 +1,64 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 
-namespace Prime_Number
+namespace Day_of_Week
 {
     class Program
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter a number");
-            int number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Date");
 
-            bool Prime = true;
+            Console.WriteLine(" Enter day from 1 To 31");
+            int d = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = 2; i < number; i++)
+            Console.WriteLine("Enter month between 1 To 12");
+            int m = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter a Year");
+            int y = Convert.ToInt32(Console.ReadLine());
+
+            date.DayOfWeek(d, m, y);
+
+        }
+    }
+
+    class date
+    {
+        public static void DayOfWeek(int d, int m, int y)
+        {
+            int y1 = y - (14 - m) / 12;
+            int x = y1 + y1 / 4 - y1 / 100 + y1 / 400;
+            int m1 = m + 12 * ((14 - m) / 12) - 2;
+            int d1 = (d + x + (31 * m1) / 12) % 7;
+
+
+            switch (d1)
             {
-                int remainder = number % i;
-
-                if (remainder == 0)
-                {
-                    Prime = false;
-                }
-            }
-
-            if (Prime == true)
-            {
-                Console.WriteLine($"{number} is a prime number");
-            }
-            else if (Prime == false)
-            {
-                Console.WriteLine($"{number} is not a prime number");
+                case 0:
+                    Console.WriteLine("\n Sunday");
+                    break;
+                case 1:
+                    Console.WriteLine("\n Monday");
+                    break;
+                case 2:
+                    Console.WriteLine("\n Tuesday");
+                    break;
+                case 3:
+                    Console.WriteLine("\n wednesday");
+                    break;
+                case 4:
+                    Console.WriteLine("\n Thursday");
+                    break;
+                case 5:
+                    Console.WriteLine("\n Firday");
+                    break;
+                case 6:
+                    Console.WriteLine("\n Saturday");
+                    break;
             }
         }
 
     }
-
 }
 
