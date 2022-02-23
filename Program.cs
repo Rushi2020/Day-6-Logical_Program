@@ -1,36 +1,26 @@
-﻿// Temprature Conversion
+﻿// See https://aka.ms/new-console-template for more information
 using System;
-
-namespace Temp_Conversion
+namespace VendingMachine
 {
     class Program
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Select Temprature Conversion Method");
-            Console.WriteLine("Choose 1:Celsius to Fahrenheit   2: Fahrenheit to Celsius ");
-            int option = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Put Temp. Value To convert");
-            int temp = Convert.ToInt32(Console.ReadLine());
-
-            switch (option)
+            Console.WriteLine("minimum number of notes to give change");
+            int Number = Convert.ToInt32(Console.ReadLine());
+            int remainder = Number;
+            int[] Array = new int[8] { 1000, 500, 100, 50, 10, 5, 2, 1 };
+            foreach (int note in Array)
             {
-                case 1:
-                    double celsius_To_Fahrenheit = (temp * 9 / 5) + 32;
-                    Console.WriteLine("Temperature in Fahrenheit: " + celsius_To_Fahrenheit);
-                    break;
-                case 2:
-                    double fahrenheit_To_Celsius = (temp - 32) * 5 / 9;
-                    Console.WriteLine("Temperature in Celsius: " + fahrenheit_To_Celsius);
-                    break;
-                default:
-                    Console.WriteLine("Invalid input");
-                    break;
+                int i = 0;
+                while (remainder >= note)
+                {
+                    remainder -= note;
+                    i++;
+                }
+                string result = i > 0 ? $"{note} X {i} = {note * i}" : "-";
+                Console.WriteLine(result);
             }
         }
     }
-
-    
-    
 }
-
